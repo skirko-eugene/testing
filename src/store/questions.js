@@ -76,6 +76,9 @@ export default {
   getters: {
     questions(state) {
       return state.questions;
+    },
+    rightAnswer(state){
+      return console.log(state);
     }
   },
   mutations: {},
