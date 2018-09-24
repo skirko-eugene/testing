@@ -1,7 +1,7 @@
 <template>
   <div class="jumbotron">
     <h1 class="display-4 mb-4 text-center">Вопрос</h1>
-    
+
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-center">
         <li
@@ -9,16 +9,16 @@
           :key="index"
           :class="['page-item', {
           'active': (index === questionIndex),
-          /*'page-item--success': (questions.indexOf(question.answers.userAnswer === true))*/
+          'page-item--success': (question.answers.findIndex(item => item.userAnswer == true) === question.answers.findIndex(item => item.correct == true)),
+          'page-item--error': (question.answers.findIndex(item => item.userAnswer == true) !== question.answers.findIndex(item => item.correct == true))
           }]"
           ref="pageItem"
-          ><a class="page-link" href="javascript:void(0);">{{index+1}}
-        </a></li>
+          ><a class="page-link" href="javascript:void(0);">{{ index+1 }}</a></li>
       </ul>
     </nav>
-    
+
     <div class="question mb-5">
-      
+
       <div class="row">
         <div class="col-sm-4">
           <div class="alert alert-primary" role="alert" >
@@ -26,7 +26,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-sm-4">
           <div class="list-group">
@@ -39,7 +39,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -59,7 +59,7 @@
       checkAnswer(qid, index) {
         if (qid === this.questions.length - 1) return;
         this.questionIndex++;
-        
+
         if (this.questions[qid].answers[index].correct){
           setTimeout(_=>{
             document.querySelectorAll('.page-item')[qid].classList.add('page-item--success')
@@ -76,7 +76,7 @@
       wrongClasses(qid){
         this.$refs.pageItem[qid].classList.add('page-item--error')
       },
-      
+
     },
     computed: {
       questions() {
@@ -85,7 +85,7 @@
       getRightAnswerUser() {
         return this.$store.getters.getRightAnswerUser
       }
-      
+
     }
   }
 </script>
@@ -93,15 +93,15 @@
   .row {
     justify-content: center;
   }
-  
+
   .question {
     text-align: center;
   }
-  
+
   .jumbotron {
     margin-bottom: 0;
   }
-  
+
   .list-group-item {
     text-align: left;
   }
@@ -119,7 +119,3 @@
     border-color: #f5c6cb;
   }
 </style>
-
-
-
-

@@ -15,10 +15,10 @@ export default {
         qid: '',
         question: 'My uncle ... like football very much.',
         answers: [
-          {answer: 'doesn\'t', correct: true, userAnswer: false},
+          {answer: 'doesn\'t', correct: true, userAnswer: true},
           {answer: 'don\'t', correct: false, userAnswer: false},
           {answer: 'hasn\'t', correct: false, userAnswer: false},
-          {answer: 'didn\'t', correct: false, userAnswer: true}
+          {answer: 'didn\'t', correct: false, userAnswer: false}
         ],
       },
       {
@@ -26,8 +26,8 @@ export default {
         question: 'How ... does that iphone cost?',
         answers: [
           {answer: 'is', correct: false, userAnswer: false},
-          {answer: 'many', correct: false, userAnswer: false},
-          {answer: 'much', correct: true, userAnswer: true},
+          {answer: 'many', correct: false, userAnswer: true},
+          {answer: 'much', correct: true, userAnswer: false},
           {answer: 'are', correct: false, userAnswer: false}
         ],
       },
@@ -37,8 +37,8 @@ export default {
         answers: [
           {answer: 'is', correct: false, userAnswer: false},
           {answer: 'are', correct: true, userAnswer: false},
-          {answer: 'have', correct: false, userAnswer: false},
-          {answer: 'had', correct: false, userAnswer: true}
+          {answer: 'have', correct: false, userAnswer: true},
+          {answer: 'had', correct: false, userAnswer: false}
         ],
       },
       {
@@ -91,7 +91,7 @@ export default {
     getRightAnswerUser(state) {
       return state.rightAnswerUser;
     },
-    
+
     rightAnswer(state){
       return console.log(state);
     }
@@ -99,20 +99,3 @@ export default {
   mutations: {},
   actions: {}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
